@@ -67,7 +67,7 @@
   </article>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { formatNumber } from '@/helpers'
 import {
   Badge,
@@ -86,118 +86,52 @@ dayjs.extend(relativeTime)
 
 import { computed } from 'vue'
 
-const props = defineProps({
-  id: {
-    type: String,
-    default: 'modrinth-0',
-  },
-  type: {
-    type: String,
-    default: 'mod',
-  },
-  name: {
-    type: String,
-    default: 'Project Name',
-  },
-  author: {
-    type: String,
-    default: null,
-  },
-  description: {
-    type: String,
-    default: 'A _type description',
-  },
-  iconUrl: {
-    type: String,
-    default: '#',
-    required: false,
-  },
-  downloads: {
-    type: String,
-    default: null,
-    required: false,
-  },
-  follows: {
-    type: String,
-    default: null,
-    required: false,
-  },
-  createdAt: {
-    type: String,
-    default: '0000-00-00',
-  },
-  updatedAt: {
-    type: String,
-    default: null,
-  },
-  categories: {
-    type: Array,
-    default() {
-      return []
-    },
-  },
-  filteredCategories: {
-    type: Array,
-    default() {
-      return []
-    },
-  },
-  projectTypeDisplay: {
-    type: String,
-    default: null,
-  },
-  projectTypeUrl: {
-    type: String,
-    default: null,
-  },
-  status: {
-    type: String,
-    default: null,
-  },
-  serverSide: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  clientSide: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  moderation: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  search: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  featuredImage: {
-    type: String,
-    required: false,
-    default: null,
-  },
-  showUpdatedDate: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
-  hideLoaders: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  color: {
-    type: Number,
-    required: false,
-    default: null,
-  },
-})
+const props = withDefaults(
+  defineProps<{
+    id: string
+    type: string
+    name: string
+    author: string
+    description: string
+    iconUrl?: string
+    downloads?: string
+    follows?: string
+    createdAt: string
+    updatedAt: string
+    categories: string[]
+    filteredCategories: string[]
+    projectTypeDisplay: string
+    projectTypeUrl: string
+    status: string
+    serverSide?: string
+    clientSide?: string
+    moderation?: boolean
+    search?: boolean
+    featuredImage?: string
+    showUpdatedDate?: boolean
+    hideLoaders?: boolean
+    color?: number
+  }>(),
+  {
+    id: 'modrinth-0',
+    type: 'mod',
+    name: 'Project Name',
+    description: 'A _type description',
+    iconUrl: '#',
+    createdAt: '0000-00-00',
+    categories: () => [],
+    filteredCategories: () => [],
+    serverSide: '',
+    clientSide: '',
+    moderation: false,
+    search: false,
+    showUpdatedDate: true,
+    hideLoaders: false,
+  }
+)
 
 const toColor = computed(() => {
-  let color = props.color
+  let color: number = props.color
 
   color >>>= 0
   const b = color & 0xff
