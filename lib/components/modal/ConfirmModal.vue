@@ -22,7 +22,7 @@
       <div class="input-group push-right">
         <button class="btn" @click="modal.hide()">
           <XIcon />
-          Cancel
+          {{ formatMessage(messages.cancelButton) }}
         </button>
         <button class="btn btn-danger" :disabled="action_disabled" @click="proceed">
           <TrashIcon />
@@ -36,6 +36,15 @@
 <script setup>
 import { Modal, TrashIcon, XIcon, renderString } from '@'
 import { ref } from 'vue'
+
+import { useVIntl, defineMessages } from '@vintl/vintl'
+const messages = defineMessages({
+  cancelButton: {
+    id: 'omorphia.button.cancel',
+    defaultMessage: 'Cancel',
+  },
+})
+const { formatMessage } = useVIntl()
 
 const props = defineProps({
   confirmationText: {

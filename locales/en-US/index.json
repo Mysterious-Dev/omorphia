@@ -56,6 +56,9 @@
   "omorphia.component.badge.label.withheld": {
     "defaultMessage": "Withheld"
   },
+  "omorphia.button.cancel": {
+    "defaultMessage": "Cancel"
+  },
   "omorphia.component.copy.action.copy": {
     "defaultMessage": "Copy code to clipboard"
   },
