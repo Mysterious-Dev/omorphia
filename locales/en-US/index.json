@@ -77,6 +77,9 @@
   "omorphia.component.environment-indicator.label.unsupported": {
     "defaultMessage": "Unsupported"
   },
+  "omorphia.component.markdown-editor.action.insert": {
+    "defaultMessage": "Insert"
+  },
   "project.by-author": {
     "defaultMessage": "by {author}"
   },

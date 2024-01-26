@@ -55,7 +55,7 @@
               linkModal?.hide()
             }
           "
-          ><PlusIcon /> Insert</Button
+          ><PlusIcon /> {{ formatMessage(messages.insert) }}</Button
         >
       </div>
     </div>
@@ -143,7 +143,7 @@
             }
           "
         >
-          <PlusIcon /> Insert
+          <PlusIcon /> {{ formatMessage(messages.insert) }}
         </Button>
       </div>
     </div>
@@ -197,7 +197,7 @@
             }
           "
         >
-          <PlusIcon /> Insert
+          <PlusIcon /> {{ formatMessage(messages.insert) }}
         </Button>
       </div>
     </div>
@@ -299,6 +299,15 @@ import {
 
 import { markdownCommands, modrinthMarkdownEditorKeymap } from '@/helpers/codemirror'
 import { renderHighlightedString } from '@/helpers/highlight'
+import { useVIntl, defineMessages } from '@vintl/vintl'
+
+const messages = defineMessages({
+  insert: {
+    id: 'omorphia.component.markdown-editor.action.insert',
+    defaultMessage: 'Insert',
+  },
+})
+const { formatMessage } = useVIntl()
 
 const props = withDefaults(
   defineProps<{
