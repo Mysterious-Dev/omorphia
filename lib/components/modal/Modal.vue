@@ -31,24 +31,22 @@
   <div v-else></div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { XIcon } from '@'
 import { ref } from 'vue'
 
-const props = defineProps({
-  header: {
-    type: String,
-    default: null,
-  },
-  noblur: {
-    type: Boolean,
-    default: false,
-  },
-  closable: {
-    type: Boolean,
-    default: true,
-  },
-})
+const props = withDefaults(
+  defineProps<{
+    header: string
+    noblur: boolean
+    closable: boolean
+  }>(),
+  {
+    noblur: false,
+    closable: true,
+  }
+)
+
 
 const shown = ref(false)
 const actuallyShown = ref(false)
